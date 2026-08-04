@@ -18,7 +18,7 @@
     <!-- Static Pre-Compiled Production Stylesheet -->
     <style>
         *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e2e8f0; }
-        html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; scroll-behavior: smooth; scroll-padding-top: 4.75rem; }
+        html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; scroll-behavior: smooth; scroll-padding-top: 4rem; }
         body { margin: 0; background-color: #f8fafc; color: #1e293b; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
         /* Keep internal navigation links the same color before and after clicking */
@@ -32,10 +32,8 @@
         header nav a:visited,
         header nav a:active { color: inherit; }
 
-        /* Leave visible breathing room below the sticky header when jumping to a section */
-        /* Anchor positioning for the sticky 4rem navigation header.
-           Use only scroll-padding here; combining it with scroll-margin
-           caused every section to stop too far down the page. */
+        /* Align every anchor section directly beneath the 4rem sticky header.
+           No additional gap is used, so the previous section cannot remain visible. */
         section[id] { scroll-margin-top: 0; }
 
         /* Tighter hero spacing removes the large unused area beneath the navigation */
@@ -550,6 +548,80 @@
             <p>&copy; 2026 Mehrab Rahman Tutoring. All rights reserved. Locally serving Tempe, Phoenix, and the ASU community.</p>
         </div>
     </footer>
+
+    <!-- Exact internal-anchor positioning for the sticky navigation header -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('header');
+
+            function headerHeight() {
+                return header ? header.getBoundingClientRect().height : 0;
+            }
+
+            function scrollToSection(hash, smooth) {
+                if (!hash || hash === '#') {
+                    window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+                    return;
+                }
+
+                let target;
+                try {
+                    target = document.querySelector(hash);
+                } catch (error) {
+                    return;
+                }
+
+                if (!target) return;
+
+                const targetTop = target.getBoundingClientRect().top + window.scrollY;
+                const exactScrollTop = Math.max(0, targetTop - headerHeight());
+
+                window.scrollTo({
+                    top: exactScrollTop,
+                    behavior: smooth ? 'smooth' : 'auto'
+                });
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    const hash = link.getAttribute('href');
+                    if (!hash) return;
+
+                    if (hash === '#') {
+                        event.preventDefault();
+                        history.pushState(null, '', window.location.pathname + window.location.search);
+                        scrollToSection('#', true);
+                        return;
+                    }
+
+                    let targetExists = false;
+                    try {
+                        targetExists = Boolean(document.querySelector(hash));
+                    } catch (error) {
+                        targetExists = false;
+                    }
+
+                    if (!targetExists) return;
+
+                    event.preventDefault();
+                    history.pushState(null, '', hash);
+                    scrollToSection(hash, true);
+                });
+            });
+
+            /* Correct direct links such as index.html#reviews after the page loads. */
+            if (window.location.hash) {
+                requestAnimationFrame(function () {
+                    scrollToSection(window.location.hash, false);
+                });
+            }
+
+            /* Keep the position correct when using the browser Back/Forward buttons. */
+            window.addEventListener('popstate', function () {
+                scrollToSection(window.location.hash || '#', false);
+            });
+        });
+    </script>
 
 </body>
 </html>
