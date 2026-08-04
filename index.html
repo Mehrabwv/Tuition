@@ -22,7 +22,11 @@
         body { margin: 0; background-color: #f8fafc; color: #1e293b; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
         /* Keep internal navigation links the same color before and after clicking */
-        a { color: inherit; }
+        a { color: inherit; text-decoration: none; }
+        a:link,
+        a:visited,
+        a:hover,
+        a:active { text-decoration: none; }
         header nav a,
         header nav a:link,
         header nav a:visited,
@@ -32,7 +36,7 @@
         section[id] { scroll-margin-top: 5.5rem; }
 
         /* Tighter hero spacing removes the large unused area beneath the navigation */
-        .hero-section { padding-top: 3rem; padding-bottom: 4rem; }
+        .hero-section { padding-top: 1.25rem; padding-bottom: 3.5rem; }
         
         /* Layout & Constraints */
         .max-w-6xl { max-width: 72rem; }
@@ -180,7 +184,7 @@
             .sm\:flex-row { flex-direction: row; }
         }
         @media (min-width: 768px) {
-            .hero-section { padding-top: 4rem; padding-bottom: 5rem; }
+            .hero-section { padding-top: 1.5rem; padding-bottom: 4rem; }
             .md\:flex { display: flex; }
             .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
