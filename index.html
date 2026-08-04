@@ -37,6 +37,19 @@
 
         /* Tighter hero spacing removes the large unused area beneath the navigation */
         .hero-section { padding-top: 1.25rem; padding-bottom: 3.5rem; }
+        .hero-card-label { color: #0f172a; }
+        .hero-card-copy { font-size: 0.95rem; line-height: 1.5; color: #475569; }
+        .hero-cta {
+            min-height: 3.5rem;
+            min-width: 13rem;
+            padding: 0.9rem 1.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            font-size: 1.05rem;
+            line-height: 1.25;
+        }
         
         /* Layout & Constraints */
         .max-w-6xl { max-width: 72rem; }
@@ -257,10 +270,10 @@
                     Personalized instruction in K-12 STEM, comprehensive SAT preparation, and hands-on coding. Melding the world-class rigor of Singapore education with practical engineering principles.
                 </p>
                 <div class="mt-10 flex flex-col sm:flex-row gap-4">
-                    <a href="#book" class="bg-slate-900 text-white text-center px-6 py-3 rounded-xl font-medium hover:bg-slate-800 transition shadow-lg">
+                    <a href="#book" class="hero-cta bg-slate-900 text-white text-center rounded-xl font-semibold hover:bg-slate-800 transition shadow-lg">
                         Book an Intake Call
                     </a>
-                    <a href="#academic" class="border border-slate-300 text-slate-700 text-center px-6 py-3 rounded-xl font-medium hover:bg-slate-50 transition">
+                    <a href="#academic" class="hero-cta border border-slate-300 text-slate-700 text-center rounded-xl font-semibold hover:bg-slate-50 transition">
                         View Offerings
                     </a>
                 </div>
@@ -270,17 +283,17 @@
             <div class="bg-slate-100 rounded-3xl p-8 border border-slate-200 shadow-inner grid grid-cols-2 gap-4">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 col-span-2 md:col-span-1">
                     <div class="text-3xl font-extrabold text-indigo-600">Top 95%</div>
-                    <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Official SAT Rank</div>
-                    <p class="text-xs text-slate-500 mt-2">Scored in the elite 95th percentile globally. Proven blueprints across both Math and Reading & Writing modules.</p>
+                    <div class="hero-card-label text-sm font-semibold uppercase tracking-wider mt-1">Official SAT Rank</div>
+                    <p class="hero-card-copy mt-2">Scored in the elite 95th percentile globally. Proven blueprints across both Math and Reading & Writing modules.</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 col-span-2 md:col-span-1">
                     <div class="text-3xl font-extrabold text-indigo-600">Flexible</div>
-                    <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Scheduling</div>
-                    <p class="text-xs text-slate-500 mt-2">Highly adaptive availability constructed completely around the student's timeline, choice, and calendar requirements.</p>
+                    <div class="hero-card-label text-sm font-semibold uppercase tracking-wider mt-1">Scheduling</div>
+                    <p class="hero-card-copy mt-2">Highly adaptive availability constructed completely around the student's timeline, choice, and calendar requirements.</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 col-span-2">
                     <div class="text-sm font-bold text-slate-900">ASU Engineering Pedigree</div>
-                    <p class="text-xs text-slate-500 mt-1">Grounded in practical, mathematical execution. Teaching coding frameworks and physical microelectronics layout alongside traditional school curricula.</p>
+                    <p class="hero-card-copy mt-2">Grounded in practical, mathematical execution. Teaching coding frameworks and physical microelectronics layout alongside traditional school curricula.</p>
                 </div>
             </div>
         </div>
