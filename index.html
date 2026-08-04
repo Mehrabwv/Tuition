@@ -18,7 +18,7 @@
     <!-- Static Pre-Compiled Production Stylesheet -->
     <style>
         *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e2e8f0; }
-        html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+        html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; scroll-behavior: smooth; scroll-padding-top: 4.75rem; }
         body { margin: 0; background-color: #f8fafc; color: #1e293b; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
         /* Keep internal navigation links the same color before and after clicking */
@@ -33,7 +33,10 @@
         header nav a:active { color: inherit; }
 
         /* Leave visible breathing room below the sticky header when jumping to a section */
-        section[id] { scroll-margin-top: 5.5rem; }
+        /* Anchor positioning for the sticky 4rem navigation header.
+           Use only scroll-padding here; combining it with scroll-margin
+           caused every section to stop too far down the page. */
+        section[id] { scroll-margin-top: 0; }
 
         /* Tighter hero spacing removes the large unused area beneath the navigation */
         .hero-section { padding-top: 1.25rem; padding-bottom: 3.5rem; }
