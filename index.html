@@ -81,6 +81,32 @@
             box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
         }
         
+        /* Responsive Calendly embed: desktop keeps the full height, while phones
+           use a shorter container so empty iframe space does not appear above
+           the booking confirmation notice. */
+        .calendly-embed {
+            width: 100%;
+            min-width: 320px;
+            height: 700px;
+        }
+        .booking-notice {
+            margin-top: 1rem;
+        }
+        @media (max-width: 767px) {
+            .calendly-embed {
+                min-width: 0;
+                height: 560px;
+            }
+            .booking-notice {
+                margin-top: 0.75rem;
+            }
+        }
+        @media (max-width: 390px) {
+            .calendly-embed {
+                height: 540px;
+            }
+        }
+
         /* Layout & Constraints */
         .max-w-6xl { max-width: 72rem; }
         .max-w-4xl { max-width: 56rem; }
@@ -297,7 +323,7 @@
                     Build Strong Foundations. Accelerate Beyond the Classroom.
                 </h1>
                 <p class="mt-6 text-lg text-slate-600 leading-relaxed">
-                    Personalized tutoring in K–12 math, science, SAT prep, and coding. Clear and practical lessons designed to help students build confidence, improve step by step and excel beyond.
+                    Personalized tutoring in K-12 math, science, SAT prep, and coding. Lessons are clear, practical, and designed to help students build confidence and improve step by step.
                 </p>
                 <div class="mt-10 flex flex-col sm:flex-row gap-4">
                     <a href="#book" class="hero-cta bg-slate-900 text-white text-center rounded-xl font-semibold hover:bg-slate-800 transition shadow-lg">
@@ -512,7 +538,7 @@
             <div class="md:col-span-2">
                 <h2 class="text-3xl font-bold tracking-tight text-slate-900">About Mehrab Rahman</h2>
                 <p class="mt-4 text-slate-600 leading-relaxed">
-                    Hi! I'm Mehrab Rahman. I am an engineering student at Arizona State University. I spent the vast majority of my primary and secondary academic education inside the world-renowned Singapore education system, giving me a uniquely deep perspective on conceptual logic and math foundations.
+                    Hi! I'm Mehrab Rahman. I am an engineering student at Arizona State University. I spent the vast majority of my primary and secondary academic career inside the world-renowned Singapore education system, giving me a uniquely deep perspective on conceptual logic and math foundations.
                 </p>
                 <p class="mt-4 text-slate-600 leading-relaxed">
                     I have built significant experience working with students coming from entirely different baseline academic situations. Whether it's diagnosing structural knowledge gaps to bring struggling students up to high standards, or engineering challenging lesson paths to help advanced students stay way ahead of their high school peers, I calibrate my pacing completely to the individual.
@@ -536,13 +562,13 @@
             <!-- Calendly Live Inline Widget -->
             <div class="mt-8">
                 <!-- Calendly inline widget begin -->
-                <div class="calendly-inline-widget" data-url="https://calendly.com/mehrab-wv/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=5919f2" style="min-width:320px;height:700px;"></div>
+                <div class="calendly-inline-widget calendly-embed" data-url="https://calendly.com/mehrab-wv/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=5919f2"></div>
                 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                 <!-- Calendly inline widget end -->
             </div>
 
             <!-- Email Confirmation Static Notice Box -->
-            <div class="mt-4 p-4 bg-indigo-50 border border-slate-200 rounded-xl text-indigo-700 text-sm font-medium">
+            <div class="booking-notice p-4 bg-indigo-50 border border-slate-200 rounded-xl text-indigo-700 text-sm font-medium">
                 ⚠️ Important: Please check your email inbox (and spam folder) immediately after scheduling and confirm your booking invitation.
             </div>
         </div>
